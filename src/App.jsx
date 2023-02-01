@@ -51,43 +51,66 @@ const products = [
 ]
 function App() {
   const [fSize, setFSize] = useState(20)
-  const [list, setList] = useState(products)
-  const [product, setProduct] = useState({})
+  const [list, setList] = useState([])
+  const [prod, setProd] = useState({})
+  const [totalProducts,setTotalProducts]=useState(0)
 
-  //   useEffect(()=>{
-  //     if (product.id){
-  //       const newArr=list.map(p=>{
-  //         if (p.id==product.id){
-  //           return {...p,tittle:product.tittle}
-  //         }
-  //         else {
-  //           return p
-  //         }
-  //       });
-
-  //     }
+    useEffect(()=>{
+      setList(products)
+      setTotalProducts(products.length)
+    },[])
 
 
-  // },[product])
-  const handlerState = (setState) => {
-    if (product.tittle) {
+    useEffect(()=>{
+      if (prod.id){
+      
+        const newArr=list.map(p=>{
+          if (p.id==prod.id){
+            return {...p,tittle:prod.tittle}
+          }
+          else {
+            return p
+          }
+        });
+        setList(newArr)
+        console.log(newArr)
+      }
 
-      setState(product.tittle)
-    }
-  }
+
+  },[prod])
+
+
+
   return (
 
 
     <div className="App">
       <header> <h1> Product List</h1></header>
       <div className='header-panel'>
-        <input type="text" value={product.tittle ? product.tittle : ''} onChange={e => setProduct({ ...product, tittle: e.target.value })} />
-        <input type="range" min={19} max={24} value={fSize} onChange={e => setFSize(e.target.value)} />
+        <div> <input type="text" value={prod.tittle ? prod.tittle : ''} onChange={e => setProd({ ...prod, tittle: e.target.value })} /></div>
+        <div>
+          <h3>
+          Total Items:
+          </h3>
+          <p>
+            {totalProducts}
+          </p>
+          </div>
+        <div> <input type="range" min={19} max={24} value={fSize} onChange={e => setFSize(e.target.value)} /></div>
+       
+       
       </div>
       <div className='product-container'>
 
         {list && list.map(product =>
-          <ProductCard key={product.id} product={product} fsize={fSize} setProduct={setProduct} handlerState={handlerState} pTittle={product.tittle?product.tittle:''}/>
+          <ProductCard 
+          key={product.id}
+           product={product}
+            fsize={fSize} setProduct={setProd} 
+            
+            totalProducts={totalProducts}
+            setTotalProducts={setTotalProducts}
+             />
         )}
       </div>
 

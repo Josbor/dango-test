@@ -37,13 +37,22 @@ header::after{
   width: 100%;
   display:  flex;
   gap: 10px;
-  flex-direction:row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-content: center;
   margin-bottom: 20px;
   position: sticky;
   top: 0;
   box-sizing: border-box;
+}
+.header-panel div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
 }
 .product-card {
   margin: 0 auto;
@@ -111,3 +120,5 @@ header::after{
   color: #363636;
 
 }
+
+
