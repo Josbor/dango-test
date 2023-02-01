@@ -7,11 +7,13 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
     const [quantity,setQuantity]=useState(1)
     const {price,description,image,tittle}=product
    
-    
+    const editField=document.querySelector('#input-edit'); 
+    console.log(editField)
     //STYLES
     const cardTittle={
         fontSize:`${fsize}px`,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textTransform:'capitalize'
     }
 
     const cardImage={
@@ -21,7 +23,8 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
         backgroundPosition:'center',
         backgroundSize:'cover',
         backgroundRepeat:'no-repeat',
-        borderRadius:'15px'
+        borderRadius:'15px',
+      
         
 
     }
@@ -30,11 +33,15 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
         setQuantity(Number(cant))
     }
     return (
-    <div className='product-card' onClick={()=>setProduct(product)}>
+    <div className='product-card' >
         <div style={cardImage}></div>
         <div>
 
-        <div ><h1 style={cardTittle}>{tittle}</h1></div>
+        <div  className='tittle-field' onClick={()=>{
+            setProduct(product);
+            editField.focus()
+        
+        }} ><h1 style={cardTittle}>{tittle}</h1></div>
         <div className='card-amount'>
             <h2>${price}.00</h2>
             <input type="number" min={0} max={100} value={quantity} onChange={e=>handleQuantity(e.target.value)} />

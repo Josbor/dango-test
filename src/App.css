@@ -4,7 +4,7 @@
 }
 body{
   margin: 0 auto;
-  max-width: 1280px;
+  width: 100vw;
   box-sizing: border-box;
 }
 header {
@@ -26,8 +26,14 @@ header::after{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   row-gap: 30px;
-}
+  margin-bottom: 20px;
 
+}
+.tittle-field{
+  width: 100%;
+  min-height: 80px;
+  cursor: pointer;
+}
 .header-panel{
   background-color: #ffffff;
   padding: 20px 0;
@@ -40,10 +46,67 @@ header::after{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   align-content: center;
+  flex-wrap: wrap;
   margin-bottom: 20px;
-  position: sticky;
+  position: sticky !important;
   top: 0;
   box-sizing: border-box;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.header-panel div:nth-child(1):hover::after{
+  content: 'select and edit a tittle';
+  font-weight: bold;
+  font-size: small;
+  display: block;
+  position: absolute;
+  transform: translate(180px);
+  padding: 10px;
+  background-color: #ffffff;
+  outline: solid rgb(99, 156, 237);
+  border-radius: 10px;
+  
+}
+
+
+.header-panel div:nth-child(3):hover::after{
+  content: 'change the font size!';
+  font-weight: bold;
+  font-size: small;
+  display: block;
+  position: absolute;
+  transform: translate(-180px);
+  padding: 10px;
+  background-color: #ffffff;
+  outline: solid rgb(99, 156, 237);
+  border-radius: 10px;
+  
+}
+.header-panel div:nth-child(1) input{
+  padding: 10px;
+  border-radius: 5px;
+  border-color: #c2c2c2;
+  outline: #c2c2c2;
+}
+@media (max-width:600px) {
+  .header-panel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+  .header-panel div:nth-child(1)::before{
+    content: 'select a tittle';
+    font-weight: bold;
+    font-size: small;
+  }
+  .header-panel div:nth-child(1):hover::after{
+    display: none;
+  }
+
+  .header-panel div:nth-child(3):hover::after{
+    display: none;
+  }
 }
 .header-panel div{
   display: flex;
@@ -121,4 +184,31 @@ header::after{
 
 }
 
+footer{
+  font-size: small;
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #181818;
+  color: #777878;
+}
+
+.button-repository{
+  text-decoration: none;
+  padding: 10px;
+  color: rgb(200, 103, 0) ;
+  border: 2px solid  rgb(200, 103, 0) ;
+  border-radius: 7px;
+  text-transform: capitalize;
+}
+
+
+.button-repository:hover{
+  color:  rgb(255, 150, 39) ;
+  border-color:rgb(255, 150, 39) ;
+}
 
