@@ -8,7 +8,7 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
     const {price,description,image,tittle}=product
    
     const editField=document.querySelector('#input-edit'); 
-    console.log(editField)
+   
     //STYLES
     const cardTittle={
         fontSize:`${fsize}px`,
@@ -30,7 +30,7 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
     }
     const handleQuantity=(cant)=>{
         setTotalProducts((Number(totalProducts)-quantity)+Number(cant))
-        setQuantity(Number(cant))
+        setQuantity(Number(cant)==0?null:Number(cant))
     }
     return (
     <div className='product-card' >
@@ -39,12 +39,19 @@ const ProductCard = ({product,fsize,setProduct,totalProducts,setTotalProducts}) 
 
         <div  className='tittle-field' onClick={()=>{
             setProduct(product);
+            const end = editField.value.length;
+
+          
+            editField.setSelectionRange(end, end);
+         
             editField.focus()
+            
+           
         
         }} ><h1 style={cardTittle}>{tittle}</h1></div>
         <div className='card-amount'>
             <h2>${price}.00</h2>
-            <input type="number" min={0} max={100} value={quantity} onChange={e=>handleQuantity(e.target.value)} />
+            <input type="number" min={0} max={100} value={quantity} onChange={e=>handleQuantity(e.target.value)} onBlur={e=>e.target.value==''&&quantity==''&&setQuantity(0)} onFocus={(e)=>e.target.value==0&&setQuantity('')}/>
         </div>
         <div className='card-description'>
             <p>{description}</p>

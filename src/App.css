@@ -60,7 +60,7 @@ header::after{
   font-size: small;
   display: block;
   position: absolute;
-  transform: translate(180px);
+  transform: translate(325px);
   padding: 10px;
   background-color: #ffffff;
   outline: solid rgb(99, 156, 237);
@@ -87,6 +87,8 @@ header::after{
   border-radius: 5px;
   border-color: #c2c2c2;
   outline: #c2c2c2;
+  width: 100%;
+  margin-left: 20%;
 }
 @media (max-width:600px) {
   .header-panel{
@@ -97,8 +99,10 @@ header::after{
   }
   .header-panel div:nth-child(1)::before{
     content: 'select a tittle';
-    font-weight: bold;
-    font-size: small;
+    width: 90px;
+    display:block;
+     font-weight: bold;
+    font-size: x-small;
   }
   .header-panel div:nth-child(1):hover::after{
     display: none;
@@ -106,6 +110,10 @@ header::after{
 
   .header-panel div:nth-child(3):hover::after{
     display: none;
+  }
+  .header-panel div:nth-child(1) input{
+    margin: 0;
+    width: 70%;
   }
 }
 .header-panel div{

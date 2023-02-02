@@ -100,7 +100,9 @@ function App() {
               placeholder='select your item & edit it'
               value={prod.tittle ? prod.tittle : ''}
               onChange={e => setProd({ ...prod, tittle: e.target.value })}
-              onBlur={handlerBlur} /></div>
+              onBlur={handlerBlur}
+              
+              /></div>
         <div>
           <h3>
           Total Items:
